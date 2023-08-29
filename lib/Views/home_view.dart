@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_ui_setup/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -22,6 +23,7 @@ class HomeView extends StatelessWidget {
           ],
         ),
       ),
+      body:HomeViewBody() ,
     );
   }
 }
