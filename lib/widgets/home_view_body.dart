@@ -11,17 +11,29 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const  Padding(
       padding:  EdgeInsets.symmetric(horizontal: 16),
-      child:   Column(
-        children:  [
-          CategoryListView(
-            
-          ),
-             SizedBox(
-                     height: 32,
-          ),
-          Expanded(child: NewsListTitle())
+      child: CustomScrollView(
+        physics: BouncingScrollPhysics(),
+        slivers: [
+         SliverToBoxAdapter(child: CategoryListView()),
+         SliverToBoxAdapter(child: SizedBox(
+          height: 32,
+         ),),
+         SliverToBoxAdapter(
+          child: NewsListTitle(),
+         )
         ],
       ),
+      // child:   Column(
+      //   children:  [
+      //     CategoryListView(
+            
+      //     ),
+      //        SizedBox(
+      //                height: 32,
+      //     ),
+      //     Expanded(child: NewsListTitle())
+      //   ],
+      // ),
     );
   }
 }
