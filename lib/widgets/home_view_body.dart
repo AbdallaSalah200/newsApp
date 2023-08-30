@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_ui_setup/widgets/News_title.dart';
 import 'package:news_app_ui_setup/widgets/catgory_card.dart';
+import 'package:news_app_ui_setup/widgets/news_list_title.dart';
 import 'package:news_app_ui_setup/widgets/category_list_view_card.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -7,6 +9,19 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CategoryListView();
+    return const  Padding(
+      padding:  EdgeInsets.symmetric(horizontal: 16),
+      child:   Column(
+        children:  [
+          CategoryListView(
+            
+          ),
+             SizedBox(
+                     height: 32,
+          ),
+          Expanded(child: NewsListTitle())
+        ],
+      ),
+    );
   }
 }
