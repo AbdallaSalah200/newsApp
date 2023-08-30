@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_ui_setup/models/category_model.dart';
+
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({super.key});
-
+  const CategoryCard({
+    Key? key,
+    required this.categories,
+  }) : super(key: key);
+ final CategoryModel categories ;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 110,
-      width: 220,
-      
-      decoration: BoxDecoration(
-        image: const  DecorationImage(image: AssetImage('assets/premium_photo-1661963212517-830bbb7d76fc.jpeg')),
-        borderRadius: BorderRadius.circular(12)
-      ),
-      child:  const Center(
-        child:   Text('Technolgy',style: TextStyle(
-          color: Colors.white,
-        ),),
+    return Padding(
+      padding: const EdgeInsets.only(right: 12),
+      child: Container(
+        height: 110,
+        width: 200,
+        
+        decoration: BoxDecoration(
+          image:   DecorationImage(image: AssetImage(categories.image)),
+          borderRadius: BorderRadius.circular(32)
+        ),
+        child:   Center(
+          child:   Text(categories.title,style: const  TextStyle(
+            color: Colors.white,
+          ),),
+        ),
       ),
     );
   }
