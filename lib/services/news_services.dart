@@ -7,16 +7,20 @@ final Dio  dio;
 
   NewsServices( this.dio);
  Future<List<ArticleModel>>     getnews()async{
-    var response =await dio.get('https://newsapi.org/v2/everything?q=bitcoin&apiKey=e3356860b2d843a28dae59e708fecd86');
-    print(response);
-    Map<String, dynamic> jsonData = response.data;
-    List <dynamic> articles =jsonData['articles'];
-    List< ArticleModel> articalsList =[];
-    for (var artical in articles) {
-      ArticleModel articalmodel =ArticleModel(image: artical['urlToImage'], title: artical['title'], subTitle: artical['description']);
-      articalsList.add(articalmodel);
-    }
-    return articalsList ;
+    try {
+  var response =await dio.get('https://newsapi.org/v2/everything?q=bitcoin&apiKey=e3356860b2d843a28dae59e708fecd86');
+  print(response);
+  Map<String, dynamic> jsonData = response.data;
+  List <dynamic> articles =jsonData['articles'];
+  List< ArticleModel> articalsList =[];
+  for (var artical in articles) {
+    ArticleModel articalmodel =ArticleModel(image: artical['urlToImage'], title: artical['title'], subTitle: artical['description']);
+    articalsList.add(articalmodel);
+  }
+  return articalsList ;
+}  catch (e) {
+  return [];
+}
    }
 
 } 

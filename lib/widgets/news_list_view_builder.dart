@@ -32,8 +32,8 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
   }
   @override
   Widget build(BuildContext context) {
-    return isLoading ? const   SliverFillRemaining(child: Center(child: CircularProgressIndicator())): NewsListTitle(
+    return isLoading ? const   SliverFillRemaining(child: Center(child: CircularProgressIndicator())): articles.isNotEmpty ?   NewsListTitle(
       articles: articles,
-    );
+    ):const   SliverFillRemaining(child: Text('oops the application is not work now')) ;
   }
 }
