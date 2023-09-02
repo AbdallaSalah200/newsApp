@@ -21,7 +21,7 @@ class NewsTitle extends StatelessWidget {
        const  SizedBox(
           height:8
         ),
-         Text(artical.title,
+         Text(artical.title ??" ",
       maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: const  TextStyle(color: Colors.black87,
