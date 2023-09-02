@@ -14,10 +14,14 @@ class NewsListTitle  extends StatefulWidget {
 class _NewsListTitleState extends State<NewsListTitle> {
   List<ArticleModel> articles =[];
   @override
-  void initState() async {
+  void initState()  {
     // TODO: implement initState
     super.initState(); 
-articles = await NewsServices(Dio()).getnews();
+ getgenralnews();
+  }
+
+  Future<void> getgenralnews() async {
+    articles = await NewsServices(Dio()).getnews();
   }
   @override
   Widget build(BuildContext context) {
