@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_ui_setup/models/artical_model.dart';
 
 class NewsTitle extends StatelessWidget {
-  const NewsTitle({super.key});
-
+  const NewsTitle({super.key, required this.artical});
+  final ArticleModel artical ;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.network('https://picsum.photos/250?image=9',
+          child: Image.network(artical.image??'https://picsum.photos/250?image=9',
            height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -19,19 +20,19 @@ class NewsTitle extends StatelessWidget {
        const  SizedBox(
           height:8
         ),
-     const    Text('Large Title Should be in this place ejskgblenerlkanglkwehleajnlewrnljgnlktejfwelierjlejlgjfdslgfjlfwerl ',
+         Text(artical.title,
       maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(color: Colors.black87,
+          style: const  TextStyle(color: Colors.black87,
             fontSize: 20,
             fontWeight: FontWeight.w500,),
      ),
       const SizedBox(
           height: 8,
         ),
-      const    Text('and here is description  in the tittle ',
+          Text(artical.subTitle??'  ',
      maxLines: 2,
-          style:  TextStyle(color: Colors.grey, fontSize: 14),
+          style:  const  TextStyle(color: Colors.grey, fontSize: 14),
      )
       ],
 

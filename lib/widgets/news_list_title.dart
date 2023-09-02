@@ -1,9 +1,24 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app_ui_setup/widgets/News_title.dart';
+import 'package:news_app_ui_setup/models/artical_model.dart';
+import 'package:news_app_ui_setup/services/news_services.dart';
 
-class NewsListTitle  extends StatelessWidget {
+class NewsListTitle  extends StatefulWidget {
   const NewsListTitle ({super.key});
 
+  @override
+  State<NewsListTitle> createState() => _NewsListTitleState();
+}
+
+class _NewsListTitleState extends State<NewsListTitle> {
+  List<ArticleModel> articles =[];
+  @override
+  void initState() async {
+    // TODO: implement initState
+    super.initState(); 
+articles = await NewsServices(Dio()).getnews();
+  }
   @override
   Widget build(BuildContext context) {
     // return ListView.builder(
@@ -19,11 +34,13 @@ class NewsListTitle  extends StatelessWidget {
     // ); 
     return    SliverList(delegate: SliverChildBuilderDelegate(
       
-      childCount: 10,
+      childCount:   articles.length,
       (context, index) {
-          return const  Padding(
-            padding:  EdgeInsets.only(bottom:8.0),
-            child:   NewsTitle(),
+          return  Padding(
+            padding:  const  EdgeInsets.only(bottom:8.0),
+            child:   NewsTitle(
+              artical: articles[index],
+            ),
           );
          },),);
   }
