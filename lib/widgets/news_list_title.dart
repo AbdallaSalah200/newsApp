@@ -13,10 +13,11 @@ class NewsListTitle  extends StatefulWidget {
 
 class _NewsListTitleState extends State<NewsListTitle> {
   List<ArticleModel> articles =[];
+  bool isLoading =true ;
   @override
   void initState()  {
     // TODO: implement initState
-    super.initState(); 
+   isLoading =false ; 
  getgenralnews();
  setState(() {
    
@@ -39,7 +40,7 @@ class _NewsListTitleState extends State<NewsListTitle> {
     //     );
     //   },
     // ); 
-    return    SliverList(delegate: SliverChildBuilderDelegate(
+    return  isLoading ? const  SliverToBoxAdapter(child: Center(child: CircularProgressIndicator())):  SliverList(delegate: SliverChildBuilderDelegate(
       
       childCount:   articles.length,
       (context, index) {
