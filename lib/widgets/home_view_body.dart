@@ -12,10 +12,10 @@ class HomeViewBody extends StatelessWidget {
     return  const  Padding(
       padding:  EdgeInsets.symmetric(horizontal: 16),
       child: CustomScrollView(
-        physics:  const  BouncingScrollPhysics(),
+        physics:   BouncingScrollPhysics(),
         slivers: [
-       const   SliverToBoxAdapter(child: CategoryListView()),
-       const   SliverToBoxAdapter(child: SizedBox(
+          SliverToBoxAdapter(child: CategoryListView()),
+          SliverToBoxAdapter(child: SizedBox(
           height: 32,
          ),),
         

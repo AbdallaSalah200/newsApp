@@ -18,6 +18,9 @@ class _NewsListTitleState extends State<NewsListTitle> {
     // TODO: implement initState
     super.initState(); 
  getgenralnews();
+ setState(() {
+   
+ });
   }
 
   Future<void> getgenralnews() async {
