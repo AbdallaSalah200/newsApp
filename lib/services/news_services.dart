@@ -5,8 +5,8 @@ class NewsServices {
 final Dio  dio;
 
   NewsServices( this.dio);
-   getnews()async{
-    var response =await dio.get('https://newsapi.org/v2/top-headlines?apiKey=e3356860b2d843a28dae59e708fecd86&country=eg&category=general');
+ Future<List<ArticleModel>>     getnews()async{
+    var response =await dio.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=3c88955c487e4d9db668f011dd85e737&category=general');
     //print(response);
     Map <String,dynamic> jsonData= response.data ;
     List <dynamic> articles =jsonData['articles'];
@@ -15,6 +15,7 @@ final Dio  dio;
       ArticleModel articalmodel =ArticleModel(image: artical['urlToImage'], title: artical['title'], subTitle: artical['description']);
       articalsList.add(articalmodel);
     }
+    return articalsList ;
    }
 
-}
+} 
