@@ -19,7 +19,9 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    future =NewsServices(Dio()).getnews();
+    future =NewsServices(Dio()).getTopHeadLines(
+      category: 'general'
+    );
   }
   @override
   Widget build(BuildContext context) {
