@@ -4,36 +4,38 @@ import 'package:news_app_ui_setup/models/artical_model.dart';
 import 'package:news_app_ui_setup/services/news_services.dart';
 import 'package:news_app_ui_setup/widgets/news_list_title.dart';
 
+
+
 class NewsListViewBuilder extends StatefulWidget {
-  const NewsListViewBuilder({
-    super.key,
-  });
+  const NewsListViewBuilder({super.key});
 
   @override
   State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
 }
 
 class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
-  List<ArticleModel> articles = [];
-   bool isLoading =true ;
+  var future ;
   @override
-  void initState()  {
-    super.initState();
+  void initState() {
     // TODO: implement initState
-   isLoading =false ; 
- getgenralnews();
- setState(() {
-   
- });
-  }
-
-  Future<void> getgenralnews() async {
-    articles = await NewsServices(Dio()).getnews();
+    super.initState();
+    future =NewsServices(Dio()).getnews();
   }
   @override
   Widget build(BuildContext context) {
-    return isLoading ? const   SliverFillRemaining(child: Center(child: CircularProgressIndicator())): articles.isNotEmpty ?   NewsListTitle(
-      articles: articles,
-    ):const   SliverFillRemaining(child: Text('oops the application is not work now')) ;
+    return FutureBuilder<List<ArticleModel>>(future: future, builder: (context,snapShot){
+      if (snapShot.hasData) {
+  return   NewsListTitle(
+  articles: snapShot.data??[],
+      );
+}else if(snapShot.hasError) {
+return const   SliverFillRemaining(child: Text('oops the application is not work now')) ;
+}else{
+  return const   SliverFillRemaining(child: Center(child: CircularProgressIndicator()));
+}
+});
+    // return isLoading ? const   SliverFillRemaining(child: Center(child: CircularProgressIndicator())): articles.isNotEmpty ?   NewsListTitle(
+    //   articles: articles,
+    // ):const   SliverFillRemaining(child: Text('oops the application is not work now')) ;
   }
 }

@@ -1,17 +1,19 @@
 import '../models/artical_model.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 //import 'package:news_app_ui_setup/models/artical_model.dart';
 
 class NewsTitle extends StatelessWidget {
   const NewsTitle({super.key, required this.artical});
   final ArticleModel artical ;
+  
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.network(artical.image??'https://picsum.photos/250?image=9',
+          child:   Image.network(artical.image??'https://picsum.photos/250?image=9',
            height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
