@@ -15,7 +15,9 @@ class CategoryCard extends StatelessWidget {
       onTap: (){
         Navigator.of(context).push( MaterialPageRoute(
             builder: (context) {
-              return CategoryView();           
+              return CategoryView(
+                category: categories.categryname,
+              );           
             },
           ),);
       },
@@ -30,7 +32,7 @@ class CategoryCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(32)
           ),
           child:   Center(
-            child:   Text(categories.title,style: const  TextStyle(
+            child:   Text(categories.categryname,style: const  TextStyle(
               color: Colors.white,
             ),),
           ),

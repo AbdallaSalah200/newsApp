@@ -23,7 +23,9 @@ class HomeViewBody extends StatelessWidget {
           height: 32,
          ),),
         
-       NewsListViewBuilder()
+       NewsListViewBuilder(
+        category: 'genral',
+       )
         ],
       ),
       // child:   Column(
